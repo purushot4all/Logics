@@ -38,6 +38,31 @@ Reverse Second half
 Merge both parts
 1->8->2->7->3->6->4->5
 */    
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+
+/*
+Input : 1->2->3->4->5->6->7->8    
+Output: 1->8->2->7->3->6->4->5
+
+Split 
+1->2->3->4
+5->6->7->8
+
+Reverse Second half
+5->6->7->8    ===> 8->7->6->5
+
+Merge both parts
+1->8->2->7->3->6->4->5
+*/    
 class Solution {
     public void reorderList(ListNode head) {
         if(head == null || head.next != null)
@@ -89,17 +114,17 @@ class Solution {
     {
         while(l1 != null)
         {
-            ListNode l1.next = l1.next;
-            ListNode l2.next = l2.next;
+            ListNode l1_next = l1.next;
+            ListNode l2_next = l2.next;
             
             l1.next = l2;
             
-            if(l1.next == null)
+            if(l1_next == null)
                 break;
             
-            l2.next = l1.next;
-            l1= l1.next;
-            l2 = l2.next;
+            l2.next = l1_next;
+            l1= l1_next;
+            l2 = l2_next;
         }
     }
 }
