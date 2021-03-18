@@ -1,15 +1,6 @@
-Input: S1 = “abb”, S2 = “dad” 
-Output: 2 
-a -> d 
-b -> a 
-Explanation: 
-Strings after the first operation – 
-S1 = “dbb”, S2 = “ddd” 
-Strings after the second operation – 
-S1 = “ddd”, S2 = “ddd”
-Input: S1 = “bab”, S2 = “aab” 
-Output: 1 
-b -> a 
-Explanation: 
-Strings after the first operation – 
-S1 = “aaa”, S2 = “aaa”
+1. Apply a simple Breadth First Search over the string and an element of the queue used for BFS will contain the pair str, 
+pos where pos is the position of _ in the string str.
+2. Also maintain a map namely ‘vis’ which will store the string as key and the minimum moves to get to the string as value.
+3. For every string str from the queue, generate a new string tmp based on the four conditions given and update the vis map as vis[tmp] = vis[str] + 1.
+4. Repeat the above steps until the queue is empty or the required string is generated i.e. tmp == B
+5. If the required string is generated, then return vis[str] + 1 which is the minimum number of operations required to change A to B.
